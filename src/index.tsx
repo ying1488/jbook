@@ -2,6 +2,7 @@ import * as esbuild from 'esbuild-wasm';
 import { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugins';
+import { fetchPlugin } from './plugins/fetch-plugin';
 
 const el = document.getElementById("root");
 
@@ -30,16 +31,23 @@ const App = () => {
 
   const onClick = async () => {
     try {
-      const res = await esbuild.build({
+      const result = await esbuild.build({
         entryPoints: [ 'index.js' ],
         bundle: true,
         write: false,
-        plugins: [ unpkgPathPlugin() ]
+        plugins: [
+          unpkgPathPlugin(input),
+          fetchPlugin(input)
+        ],
+        define: {
+          'process.env.NODE_ENV': '"production"',
+          global: 'window',
+        },
       });
 
       // console.log(res);
 
-      setCode(res.outputFiles[ 0 ].text);
+      setCode(result.outputFiles[ 0 ].text);
     } catch (err) {
       console.error(err);
     }
