@@ -17,12 +17,11 @@ const App = () => {
     try {
       await esbuild.initialize({
         worker: true,
-        wasmURL: '/esbuild.wasm'
+        wasmURL: 'https://unpkg.com/esbuild-wasm@0.19.11/esbuild.wasm'
       });
     } catch (err) {
 
     }
-
   };
 
   useEffect(() => {
@@ -36,7 +35,7 @@ const App = () => {
         bundle: true,
         write: false,
         plugins: [
-          unpkgPathPlugin(input),
+          unpkgPathPlugin(),
           fetchPlugin(input)
         ],
         define: {
@@ -44,9 +43,6 @@ const App = () => {
           global: 'window',
         },
       });
-
-      // console.log(res);
-
       setCode(result.outputFiles[ 0 ].text);
     } catch (err) {
       console.error(err);
