@@ -28,7 +28,19 @@ const reducer = (
   switch (action.type) {
     // cases for actions types that we want to handle in this reducer
     case ActionType.UPDATE_CELL:
-      return state;
+      const { id, content } = action.payload;
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [ id ]: {
+            ...state.data[ action.payload.id ],
+            content,
+          }
+        }
+      };
+
     case ActionType.DELETE_CELL:
       return state;
     case ActionType.MOVE_CELL:
