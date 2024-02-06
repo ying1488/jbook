@@ -4,6 +4,7 @@ import TextEditor from './components/text-editor';
 // import CodeCell from './components/code-cell';
 import { Provider } from 'react-redux';
 import { store } from './state';
+import CellList from './components/cell-list';
 
 
 const el = document.getElementById("root");
@@ -13,7 +14,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <div>
-        <TextEditor />
+        <CellList />
 
       </div>
     </Provider>
