@@ -35,7 +35,7 @@ const reducer = produce((
 
     case ActionType.DELETE_CELL:
       delete state.data[ action.payload ];
-      state.order = state.order.filter(id => id !== action.payload);
+      state.order = state.order.filter((id) => id !== action.payload);
       return state;
 
     case ActionType.MOVE_CELL:
@@ -53,11 +53,11 @@ const reducer = produce((
       const cell: Cell = {
         content: '',
         type: action.payload.type,
-        id: randomId()
+        id: randomId(),
       };
 
       state.data[ cell.id ] = cell;
-      const foundIndex = state.order.findIndex(id => id === action.payload.id);
+      const foundIndex = state.order.findIndex((id) => id === action.payload.id);
       if (foundIndex < 0) {
         state.order.push(cell.id);
       } else {
