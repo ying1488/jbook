@@ -1,4 +1,4 @@
-.w-md-editor .title{
+.w-md-editor .title {
   line-height: unset;
   font-size: unset;
   font-weight: unset;
@@ -9,21 +9,21 @@
   line-height: 1;
 }
 
-.text-editor .w-md-editor-bar svg{
-  display:none;
+.text-editor .w-md-editor-bar svg {
+  display: none;
 }
 
-.text-editor .w-md-editor-bar{
+.text-editor .w-md-editor-bar {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
   height: 11px;
-  cursor:row-resize;
+  cursor: row-resize;
   background-color: #374414b;
   background-repeat: no-repeat;
-  background-position:50%;
-  width:100%;
+  background-position: 50%;
+  width: 100%;
   position: relative;
-  margin-top:auto;
-  margin-top:0;
+  margin-top: auto;
+  margin-top: 0;
 }
  
 .text-editor em {

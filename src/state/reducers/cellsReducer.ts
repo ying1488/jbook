@@ -1,7 +1,8 @@
+import { produce } from "immer";
 import { ActionType } from "../action-types";
 import { Action } from "../actions";
 import { Cell } from "../cell";
-import { produce } from "immer";
+
 
 // define interface
 interface CellsState {
@@ -18,7 +19,7 @@ const initialState: CellsState = {
   loading: false,
   error: null,
   order: [],
-  data: {}
+  data: {},
 };
 
 //define reducer 

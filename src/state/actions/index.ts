@@ -6,7 +6,7 @@ export interface MoveCellAction {
   type: ActionType.MOVE_CELL;
   payload: {
     id: string;
-    direction: 'up' | 'down';
+    direction: Direction;
   }
 }
 
@@ -20,7 +20,7 @@ export interface InsertCellBeforeAction {
   payload: {
     id: string | null;
     type: CellTypes;
-  }
+  };
 }
 
 export interface UpdateCellAction {
@@ -35,4 +35,4 @@ export type Action =
   | MoveCellAction
   | DeleteCellAction
   | InsertCellBeforeAction
-  | UpdateCellAction 
+  | UpdateCellAction;

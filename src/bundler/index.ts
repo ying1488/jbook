@@ -10,7 +10,6 @@ const bundle = async (rawCode: string) => {
       worker: true,
       wasmURL: 'https://unpkg.com/esbuild-wasm@0.19.11/esbuild.wasm'
     });
-    service = true;
   }
 
   try {
