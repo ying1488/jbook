@@ -35,7 +35,7 @@ const html = `
      </script>
   </body>
 </html>
-`
+`;
 
 const Preview: React.FC<PreviewProps> = ({ code, err }) => {
   const iframe = useRef<any>();
@@ -52,7 +52,7 @@ const Preview: React.FC<PreviewProps> = ({ code, err }) => {
   return (
     <div className="preview-wrapper">
       <iframe
-        style={{ backgroundColor: 'white' }}
+
         title="preview"
         ref={iframe}
         sandbox="allow-scripts"

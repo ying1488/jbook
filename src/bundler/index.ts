@@ -1,14 +1,15 @@
 import * as esbuild from 'esbuild-wasm';
-import { unpkgPathPlugin } from './plugins/unpkg-path-plugin'
+import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
 import { fetchPlugin } from './plugins/fetch-plugin';
 
-let service: boolean = false;
+let initialized: boolean = false;
 
 const bundle = async (rawCode: string) => {
-  if (!service) {
+  if (!initialized) {
+    initialized = true;
     await esbuild.initialize({
       worker: true,
-      wasmURL: 'https://unpkg.com/esbuild-wasm@0.19.11/esbuild.wasm'
+      wasmURL: "https://unpkg.com/esbuild-wasm@0.19.11/esbuild.wasm",
     });
   }
 
@@ -17,21 +18,18 @@ const bundle = async (rawCode: string) => {
       entryPoints: [ 'index.js' ],
       bundle: true,
       write: false,
-      plugins: [
-        unpkgPathPlugin(),
-        fetchPlugin(rawCode)
-      ],
+      plugins: [ unpkgPathPlugin(), fetchPlugin(rawCode) ],
       define: {
         'process.env.NODE_ENV': '"production"',
         global: 'window',
       },
     });
+
     return {
       code: result.outputFiles[ 0 ].text,
-      err: ''
-    }
-  }
-  catch (err) {
+      err: '',
+    };
+  } catch (err) {
     if (err instanceof Error) {
       return {
         code: '',
@@ -40,7 +38,7 @@ const bundle = async (rawCode: string) => {
     } else {
       throw err;
     }
-  };
+  }
 };
 
 export default bundle;

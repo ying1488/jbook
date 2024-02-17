@@ -3,7 +3,7 @@ import axios from 'axios';
 import localForage from 'localforage';
 
 const fileCache = localForage.createInstance({
-  name: 'filecache'
+  name: 'filecache',
 });
 
 export const fetchPlugin = (inputCode: string) => {
@@ -33,7 +33,7 @@ export const fetchPlugin = (inputCode: string) => {
           .replace(/'/g, "\\'");
         const contents = `   
         const style = document.createElement('style');
-        style.innerText ='${escaped}';
+        style.innerText = '${escaped}';
         document.head.appendChild(style);
         `;
 
@@ -59,4 +59,4 @@ export const fetchPlugin = (inputCode: string) => {
       });
     },
   };
-}
+};

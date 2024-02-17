@@ -38,7 +38,7 @@ const TextEditor: React.FC<TextEditorProps> = ({ cell }) => {
           onChange={(v) => updateCell(cell.id, v || '')}
         />
       </div>
-    )
+    );
   }
   return (
     <div className="text-editor card" onClick={() => setEditing(true)}>
